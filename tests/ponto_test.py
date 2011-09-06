@@ -22,6 +22,11 @@ class HoraDiffTest(unittest.TestCase):
     t2 = timedelta(hours=9, minutes=50)
     self.assertEquals([1, 10], horadiff(t1, t2))
 
+  def test_diff_quebrada(self):
+    t1 = timedelta(hours=0, minutes=0)
+    t2 = timedelta(hours=9, minutes=50)
+    self.assertEquals([9, 50], horadiff(t1, t2))
+
 
 class ProntoTest(unittest.TestCase):
 
@@ -31,8 +36,21 @@ class ProntoTest(unittest.TestCase):
   '''
   def test_geracao_normal(self):
     p = Ponto(almoco_rand=False)
-    dia = p.gerar()
-    self.assertEquals(4, len(dia))
-    self.assertEquals([4, 0], horadiff(dia[0], dia[1]))
 
+    self.assertEquals([4, 0], horadiff(p.entrada, p.saida_almoco))
+
+    self.assertEquals([1, 0], horadiff(p.saida_almoco, p.volta_almoco))
+    self.assertEquals([4, 0], horadiff(p.volta_almoco, p.saida))
+
+  def test_repr(self):
+    p = Ponto()
+    p.entrada = timedelta(hours=8)
+    p.saida_almoco = timedelta(hours=12)
+    p.volta_almoco = timedelta(hours=13)
+    p.saida = timedelta(hours=17)
+    self.assertEquals("8:00 12:00 13:00 17:00", p.__repr__())
+
+  def test_timedelta_tostr(self):
+    t = timedelta(hours=8, minutes=0)
+    self.assertEquals("8:00", Ponto()._timedelta_tostr(t))
 
