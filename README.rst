@@ -27,3 +27,17 @@ Sorteia o horário do almoço. Default: `True`. Com essa opção sendo `False` a
 
 A hora de início será sorteada entre os valores `--inicio` e `--fim`
 
+
+Como usar
+=========
+
+
+Apenas instale com ``pip install geradorfdp``, rode ``fdp-gen`` e preencha sua folha de ponto. =)
+
+
+
+--
+
+Dalton Barreto
+
+
