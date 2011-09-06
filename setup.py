@@ -11,7 +11,6 @@ setup(
   description='Gerador de horários para Folha de Ponto',
   author="Dalton Barreto",
   author_email="daltonmatos@gmail.com",
-  long_description=open('README.rst').read(),
   packages=['geradorfdp'],
   scripts=['scripts/fdp-gen'],
   install_requires = ['argparse'],
