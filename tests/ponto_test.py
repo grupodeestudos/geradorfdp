@@ -42,6 +42,13 @@ class ProntoTest(unittest.TestCase):
     self.assertEquals([1, 0], horadiff(p.saida_almoco, p.volta_almoco))
     self.assertEquals([4, 0], horadiff(p.volta_almoco, p.saida))
 
+  def test_geracao_almoco_aleatorio(self):
+    p = Ponto(almoco_rand=True)
+
+    diff_chegada_almoco = horadiff(p.entrada, p.saida_almoco)
+    self.assertEquals(4, diff_chegada_almoco[0])
+    self.assertTrue(diff_chegada_almoco[1] > 0)
+
   def test_repr(self):
     p = Ponto()
     p.entrada = timedelta(hours=8)

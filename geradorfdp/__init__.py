@@ -30,6 +30,11 @@ class Ponto(object):
     
     self.entrada = timedelta(hours=inicio, minutes=self._rand_minute())
     self.saida_almoco = self.entrada + timedelta(hours=4)
+
+    if almoco_rand:
+      delta_almoco = timedelta(minutes=self._rand_minute())
+      self.saida_almoco += delta_almoco
+    
     self.volta_almoco = self.saida_almoco + timedelta(hours=1)
     self.saida = self.volta_almoco + timedelta(hours=4)
 
